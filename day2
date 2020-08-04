@@ -1,1 +1,87 @@
+Created on Tue Aug  4 13:47:20 2020
+
+@author: TKU
+"""
+
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create()  
+mc.postToChat("I am watching you")
+while True:
+    x,y,z=mc.player.getTilePos()
+    mc.postToChat("YOU are located on x:"+str(x)+",y:"+str(y)+",z"+str(z))
+
+x,y,z=mc.player.getTilePos()
+import time
+import random
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create()
+time.sleep(5)
+x,y,z=mc.player.getTilePos()
+while True:
+    color = random.randrange(0,16)
+    mc.setBlocks(x+50,y-25,z+50,x-50,y-1,z-50,95,color) 
+    time.sleep(0.5)
+     
+    from  mcpi.minecraft import Minecraft
+    mc=Minecraft.create()
+    pos=mc.player.getTilePos()
+    x=pos.x
+    y=pos.y
+    z=pos.z
+    mc.setBlocks(x,y,z,x+26,y+6,z+21,203)
+    mc.setBlocks(x+1,y+1,z+1,x+26-1,y+6-1,z+21-1,0)
+    pos=mc.player.getTilePos()
+    
+from  mcpi.minecraft import Minecraft
+mc=Minecraft.create()
+
+while True:
+    x,y,z=mc.player.getTilePos()
+    color = random.randrange(0,9)
+    mc.setBlock(x,y,z,38,color)
+    time.sleep(10)
+    
+while True:
+    x,y,z=mc.player.getTilePos()
+    mc.setBlock(x,y,z,8)
+    time.sleep(30)
+    
+while True:
+    x,y,z=mc.player.getTilePos()
+    mc.setBlock(x,y,z,11)
+    time.sleep(30)
+    
+while True:    
+    x,y,z=mc.player.getTilePos()
+    a=mc.getBlock(x,y-1,z+1)
+    b=mc.getBlock(x,y-1,z-1)
+    c=mc.getBlock(x-1,y-1,z)
+    d=mc.getBlock(x+1,y-1,z)
+    if a==8 or a==9 or b==8 or b==9 or c==8 or c==9 or d==8 or d==9:
+        mc.setBlocks(x+1,y-1,z+1,x-1,y-1,z-1,19)  
+        
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create()        
+x,y,z=mc.player.getTilePos()        
+a=0
+while a<5:
+    mc.setBlocks(x+30,y-1,z,x-30,y-10,z,19)
+    z=z-5
+    a=a+1    
+    
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create() 
+x,y,z=mc.player.getTilePos()
+try:
+    blocktype=int(input("請輸入要放的方塊ID:"))
+    mc.setBlock(x,y,z,blocktype)
+except:
+    print("只能輸入數字!!!!!!!!!!!")
+    mc.postToChat("只能輸入數字!!!!!!!!!!!")   
+    
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create()
+userName = input("請輸入姓名: ")
+message = input("請輸入發言: ")
+mc.postToChat(" ["+userName + "] " + message)
 
