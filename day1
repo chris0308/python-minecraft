@@ -1,1 +1,28 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+""" 
+
+from mcpi.minecraft import Minecraft
+import time
+mc = Minecraft.create()  
+time.sleep(5)
+print(mc.player.getTilePos())
+x=position.x
+y=position.y
+z=position.z
+mc.player.setTilePos(x,y,z)
+time.sleep(0.5)
+y=y+1
+mc.player.setTilePos(x,y,z)
+time.sleep(0.5)
+y=y+1
+mc.player.setTilePos(x,y,z)
+mc.player
+t=0
+while True:
+    t=t+1
+    mc.postToChat("第"+str(t)+"次")
 
