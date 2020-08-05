@@ -1,1 +1,102 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Aug  5 08:49:29 2020
 
+@author: TKU
+"""
+
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create()  
+x,y,z=mc.player.getPos()
+mc.setSign(x,y,z,63,0,"李宸漢好帥")
+
+x,y,z=mc.player.getPos()
+mc.setBlocks(x,y,z,x+10,y+7,z+10,35,0)
+mc.setBlocks(x,y,z,x+10-1,y+7-1,z+10-1,0)
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create()  
+x,y,z=mc.player.getPos()
+mc.setSign(x,y,z,63,0,"踩到玻璃時你會掉入陷","阱")
+
+while True:
+    x,y,z=mc.player.getPos()
+    r=mc.getBlock(x,y-1,z)
+    if r==(20) :
+            mc.player.setPos(100,-1000,100)
+            
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create()  
+while True:
+    hits=mc.events.pollBlockHits()
+    if len(hits)> 0:
+        hit=hits[0]
+        x,y,z=hit.pos.x,hit.pos.y,hit.pos.z
+        block=mc.getBlock(x,y,z)
+        print("恭喜你獵到"+str(block))
+        mc.postToChat("恭喜你獵到"+str(block))
+        
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create()  
+while True:
+    hits=mc.events.pollBlockHits()
+    if len(hits)> 0:
+     hit=hits[0]
+     x,y,z=hit.pos.x,hit.pos.y,hit.pos.z
+     mc.setBlock(x,y,z,11)
+     
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create()  
+while True:
+    hits=mc.events.pollProjectileHits()
+    if len(hits)> 0:
+        hit=hits[0]
+        x,y,z=hit.pos.x,hit.pos.y,hit.pos.z
+        mc.createExplosion(x,y,z,5)
+        mc.spawnEntity(x,y,z,99)
+        
+while True:
+    hits=mc.events.pollProjectileHits()
+    if len(hits)> 0:
+        hit=hits[0]
+        x,y,z=hit.pos.x,hit.pos.y,hit.pos.z
+        mc.spawnEntity(x,y,z,99)
+        mc.player.setPos(x,y,z)
+        
+while True:
+     hits=mc.events.pollProjectileHits()
+     if len(hits)> 0:
+        hit=hits[0]
+        x,y,z=hit.pos.x,hit.pos.y,hit.pos.z
+        mc.spawnEntity(x,y,z,99)
+        
+from mcpi.minecraft import Minecraft        
+import random , time   
+mc=Minecraft.create()     
+pos=mc.player.getPos()        
+while True:
+    x=pos.x+random.uniform(-10,10)
+    z=pos.z+random.uniform(-10,10)
+    y=pos.y+30
+    mc.spawnEntity(x,y,z,26)
+    time.sleep(0.1)
+    
+from mcpi.minecraft import Minecraft
+import time,random
+mc=Minecraft.create()
+x,y,z=mc.player.getTilePos()
+for i in range(20):
+        color = random.randrange(0,16)
+        mc.setBlocks(x+i,y-1,z+i,x+2+i,y-1,z+i,95,color)
+        
+from mcpi.minecraft import Minecraft
+mc = Minecraft.create() 
+x,y,z=mc.player.getTilePos()
+        
+def plantTree(x,y,z):
+    mc.setBlocks(x-1,y+3,z-1,x+1,y+5,z+1,161)
+    mc.setBlocks(x,y,z,x,y+2,z,17) 
+    
+for i in range(20):  
+    for j in range(20):
+        for k in range(20):
+            plantTree(x+i*5,y+k*8,z+j*5)   
